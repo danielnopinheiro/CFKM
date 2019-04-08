@@ -34,9 +34,7 @@ e = membership(d,v,h,g);
 
 old_u = e;
 old_v = v;
-it = 0;
 while true
-    it = it+1;
     v = prot_weight(d,e,h,g);
     e = membership(d,v,h,g);
     if sum(sum((e-old_u).^2 + (v-old_v).^2)) < 1e-15
@@ -45,6 +43,7 @@ while true
     old_v = v;
     old_u = e;
 end
+
 Z = 0;
 for c = 1:k
     for i = 1:n
