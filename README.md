@@ -26,5 +26,5 @@ Codes and implementations of the Convex Fuzzy k-Medoids problem
 * [MinWLA](https://github.com/danielnopinheiro/CFKM/blob/master/matlab/MinWLA.m): aims to solve the [Minimum Weighted Linear Arrangement problem](https://doi.org/10.1016/0166-218X(93)E0168-X), which sorts the indexes of a matrix so that the elements with higher values get close to the diagonal;
   * [plotMatrix](https://github.com/danielnopinheiro/CFKM/blob/master/matlab/plotMatrix.m): described above;
   * [roulette](https://github.com/danielnopinheiro/CFKM/blob/master/matlab/roulette.m): returns an index randomly with a weighted probability;
-* [foods.mat](https://github.com/danielnopinheiro/CFKM/blob/master/matlab/foods.mat): "foods" data set used in the paper;
-* [synthetic.mat](https://github.com/danielnopinheiro/CFKM/blob/master/matlab/synthetic.mat): synthetic data sets used in the paper.
+* [foods.mat](https://github.com/danielnopinheiro/CFKM/blob/master/matlab/foods.mat): Matlab workspace with the "foods" data set used in the paper;
+* [synthetic.mat](https://github.com/danielnopinheiro/CFKM/blob/master/matlab/synthetic.mat): Matlab workspace with the synthetic data sets used in the paper.
