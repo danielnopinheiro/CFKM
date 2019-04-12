@@ -1,5 +1,6 @@
 function [Z,e,v] = FMMdd(d,k,h,g)
-% This function solves the Fuzzy Clustering with Multi-Medoids problem:
+% This function aims to solve the Fuzzy Clustering with Multi-Medoids
+% problem:
 % minimize Z = sum{c}sum{i}sum{j}d{ij}*e{ci}^h*v{cj}^g
 % subject to
 % sum{c}e{ci} = 1 for all i
