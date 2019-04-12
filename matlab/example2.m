@@ -9,7 +9,7 @@ load('synthetic.mat')
 for s = 1:length(synthetic)
     %% Set the number of clusters and fuzziness and compute the distance matrix
     k = synthetic{s}.k;
-    h = 1.1;
+    h = 1.5;
     g = 1.5;
     d = pdist2(synthetic{s}.x,synthetic{s}.x).^2;
     
