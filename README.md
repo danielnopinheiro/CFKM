@@ -1,6 +1,8 @@
 # CFKM
 Codes and implementations of the Convex Fuzzy k-Medoids problem
 
+Files were removed while the paper is in review process.
+
 ## Matlab
 We provide the Matlab implementation used in [(paper link)](https://). You may start with files [example.m](https://github.com/danielnopinheiro/CFKM/blob/master/matlab/example.m) and [example2.m](https://github.com/danielnopinheiro/CFKM/blob/master/matlab/example2.m) in order to understand how to use the functions. Following we briefly describe each function present in our implementation.
 
