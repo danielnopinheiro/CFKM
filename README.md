@@ -30,3 +30,6 @@ We provide the Matlab implementation used in [(paper link)](https://). You may s
 * [synthetic.mat](https://github.com/danielnopinheiro/CFKM/blob/master/matlab/synthetic.mat): Matlab workspace with the synthetic data sets used in the paper.
 
 ## Python 2.7
+Required external libraries:
+* [NumPy](https://www.numpy.org/): package for scientific computing with Python;
+* [CVXOPT](https://cvxopt.org/): Python software for convex optimization;
