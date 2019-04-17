@@ -29,4 +29,4 @@ We provide the Matlab implementation used in [(paper link)](https://). You may s
 * [foods.mat](https://github.com/danielnopinheiro/CFKM/blob/master/matlab/foods.mat): Matlab workspace with the "foods" data set used in the paper;
 * [synthetic.mat](https://github.com/danielnopinheiro/CFKM/blob/master/matlab/synthetic.mat): Matlab workspace with the synthetic data sets used in the paper.
 
-## Python
+## Python 2.7
