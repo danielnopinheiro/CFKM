@@ -32,4 +32,5 @@ We provide the Matlab implementation used in [(paper link)](https://). You may s
 ## Python 2.7
 Required external libraries:
 * [NumPy](https://www.numpy.org/): package for scientific computing with Python;
+* [Matplotlib](https://matplotlib.org/): Python 2D plotting library;
 * [CVXOPT](https://cvxopt.org/): Python software for convex optimization;
