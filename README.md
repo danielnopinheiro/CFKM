@@ -140,11 +140,54 @@ Required external libraries:
   # drawnow: defines whether the plot should be drawn immediately (optional)
   ```
 * **CFKM_points**: plots 2D points and a CFKM solution represented by lines between points whose intensity is proportional to the assignment;
+  ```
+  def CFKM_points(x,e):
+  # This function plots 2D points "x" and a CFKM solution represented by
+  # lines between points whose intensity is proportional to the assignment
+  # 
+  # Inputs:
+  # x: n x 2 matrix of data points
+  # e: n x n matrix of memberships
+  ```
 * **FKM_points**: plots 2D points and a FKM solution represented by lines between points whose intensity is proportional to the assignment;
+  ```
+  def FKM_points(x,e):
+  # This function plots 2D points "x" and a FKM solution represented by lines
+  # between points whose intensity is proportional to the assignment
+  # 
+  # Inputs:
+  # x: n x 2 matrix of data points
+  # e: n x n matrix of memberships
+  ```
 * **FMMdd_points**: plots 2D points and a FMMdd solution represented by lines between points whose intensity is proportional to the assignment and representativeness;
+  ```
+  def FMMdd_points(x,e,v):
+  # This function plots 2D points "x" and a FMMdd solution represented by
+  # lines between points whose intensity is proportional to the assignment and representativeness
+  # 
+  # Inputs:
+  # x: n x 2 matrix of data points
+  # e: k x n matrix of memberships
+  # v: k x n matrix of representativeness
+  ```
 
 ### Miscellaneous
 * [MinWLA.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/MinWLA.py):
   * **sort**: aims to solve the [Minimum Weighted Linear Arrangement problem](https://doi.org/10.1016/0166-218X(93)E0168-X), which sorts the indexes of a matrix so that the elements with higher values get close to the diagonal;
+    ```
+    def sort(matrix,maxTime=300,names=None,showCosts=False,showImages=False):
+    # This function aims to solve the Minimum Weighted Linear Arrangement problem, which sorts the indexes of "matrix" so that the elements with higher values get close to the diagonal
+    # 
+    # Inputs:
+    # matrix: n x n matrix to be sorted
+    # maxTime: maximum time in seconds
+    # names: list with label names
+    # showCosts: toggles on/off the display of costs at each iteration (logical)
+    # showImages: toggles on/off the display of images at each iteration (logical)
+    # 
+    # Outputs:
+    # bestBestPerm: best index permutation found
+    # bestBestCost: solution cost
+    ```
 * [foods.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/foods.py): contains the "foods" data set used in the paper;
 * [synthetic.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/synthetic.py): contains the four synthetic data sets used in the paper.
