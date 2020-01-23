@@ -38,6 +38,32 @@ Required external libraries:
 
 ### [fuzzykmedoids.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/fuzzykmedoids.py):
 * **CFKM**: solves the Convex Fuzzy k-Medoids problem;
+```
+def CFKM(d,k,h):
+# This function solves the Convex Fuzzy k-Medoids problem:
+# minimize Z = sum{i}sum{j}d{ij}*e{ij}^h
+# subject to
+# sum{j}e{ij} = 1 for all i
+# sum{j}e{jj} = k
+# e{ij} <= e{jj} for all i,j
+# 0 <= e{ij} <= 1 for all i,j
+
+# Inputs:
+# d: n x n dissimilarity matrix
+# k: number of clusters
+# h: fuzziness factor
+
+# Outputs:
+# Z: solution cost
+# e: n x n membership matrix
+
+# We solve problems like:
+# minimize f(x)
+# subject to
+# A*x <= b
+# Aeq*x = beq
+# lb <= x <= ub
+```
 * **FKM**: heuristic for the Fuzzy k-Medoids problem;
 * **FMMdd**: heuristic for the Fuzzy Clustering with Multi-Medoids problem;
   * **membership**: computes the optimal assignments given the representativeness;
