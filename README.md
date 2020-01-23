@@ -27,7 +27,7 @@ We provide the Matlab implementation used in the [Convex fuzzy k-medoids cluster
 * [foods.mat](https://github.com/danielnopinheiro/CFKM/blob/master/matlab/foods.mat): Matlab workspace with the "foods" data set used in the paper;
 * [synthetic.mat](https://github.com/danielnopinheiro/CFKM/blob/master/matlab/synthetic.mat): Matlab workspace with the synthetic data sets used in the paper.
 
-## Python 2.7
+## Python 2.7/3.6
 We provide a Python implementation for the [Convex fuzzy k-medoids clustering](https://doi.org/10.1016/j.fss.2020.01.001) problem. You may start with files [example.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/example.py) and [example2.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/example2.py) in order to understand how to use the functions. Following we briefly describe each function present in our implementation.
 
 Required external libraries:
@@ -35,3 +35,10 @@ Required external libraries:
 * [Matplotlib](https://matplotlib.org/): Python 2D plotting library;
 * [CVXOPT](https://cvxopt.org/): Python software for convex optimization;
 * [Scikit-learn](https://scikit-learn.org/stable/index.html): open source machine learning library that supports supervised and unsupervised learning;
+
+### [fuzzykmedoids.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/fuzzykmedoids.py):
+* CFKM: solves the Convex Fuzzy k-Medoids problem;
+* FKM: heuristic for the Fuzzy k-Medoids problem;
+* FMMdd: heuristic for the Fuzzy Clustering with Multi-Medoids problem;
+  * membership: computes the optimal assignments given the representativeness;
+  * prot_weight: computes the optimal representativeness given the assignments;
