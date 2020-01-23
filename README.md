@@ -47,25 +47,59 @@ def CFKM(d,k,h):
 # sum{j}e{jj} = k
 # e{ij} <= e{jj} for all i,j
 # 0 <= e{ij} <= 1 for all i,j
-
+# 
 # Inputs:
 # d: n x n dissimilarity matrix
 # k: number of clusters
 # h: fuzziness factor
-
+# 
 # Outputs:
 # Z: solution cost
 # e: n x n membership matrix
-
-# We solve problems like:
-# minimize f(x)
-# subject to
-# A*x <= b
-# Aeq*x = beq
-# lb <= x <= ub
 ```
 * **FKM**: heuristic for the Fuzzy k-Medoids problem;
+```
+def FKM(d,k,h):
+# This function aims to solve the Fuzzy k-Medoids problem:
+# minimize Z = sum{i}sum{j}d{ij}*e{ij}^h
+# subject to
+# sum{j}e{ij} = 1 for all i
+# sum{j}e{jj} = k
+# e{ij} <= e{jj} for all i,j
+# 0 <= e{ij} <= 1 for all i ~= j
+# e{jj} binary for all j
+# 
+# Inputs:
+# d: n x n dissimilarity matrix
+# k: number of clusters
+# h: membership fuzziness factor
+# 
+# Outputs:
+# Z: solution cost
+# e: k x n membership matrix
+```
 * **FMMdd**: heuristic for the Fuzzy Clustering with Multi-Medoids problem;
+```
+def FMMdd(dd,k,h,g=None):
+# This function aims to solve the Fuzzy Clustering with Multi-Medoids
+# problem:
+# minimize Z = sum{c}sum{i}sum{j}d{ij}*e{ci}^h*v{cj}^g
+# subject to
+# sum{c}e{ci} = 1 for all i
+# sum{j}v{cj} = 1 for all c
+# 0 <= e{ci},v{cj} <= 1 forall c,i,j
+# 
+# Inputs:
+# d: n x n dissimilarity matrix
+# k: number of clusters
+# h: membership fuzziness factor
+# g: representativeness fuzziness degree (optional). If not provided, g=h
+# 
+# Outputs:
+# Z: solution cost
+# e: k x n membership matrix
+# v: k x n representativeness matrix
+```
   * **membership**: computes the optimal assignments given the representativeness;
   * **prot_weight**: computes the optimal representativeness given the assignments;
 
