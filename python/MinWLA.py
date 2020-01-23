@@ -3,6 +3,18 @@ import time
 import matplotlib.pyplot as plt
 import plots
 
+# This function aims to solve the Minimum Weighted Linear Arrangement problem, which sorts the indexes of "matrix" so that the elements with higher values get close to the diagonal
+# 
+# Inputs:
+# matrix: n x n matrix to be sorted
+# maxTime: maximum time in seconds
+# names: list with label names
+# showCosts: toggles on/off the display of costs at each iteration (logical)
+# showImages: toggles on/off the display of images at each iteration (logical)
+# 
+# Outputs:
+# bestBestPerm: best index permutation found
+# bestBestCost: solution cost
 def sort(matrix,maxTime=300,names=None,showCosts=False,showImages=False):
 	matrix = np.array(matrix)
 	

@@ -1,6 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+# This function plots 2D points "x" and a CFKM solution represented by
+# lines between points whose intensity is proportional to the assignment
+# 
+# Inputs:
+# x: n x 2 matrix of data points
+# e: n x n matrix of memberships
 def CFKM_points(x,e):
 	e = np.array(e)
 	n = e.shape[0]
@@ -19,6 +25,12 @@ def CFKM_points(x,e):
 		plt.plot([plots[i][0][0],plots[i][1][0]],[plots[i][0][1],plots[i][1][1]],color=(1-ee[i],1-ee[i],1-ee[i]),linewidth=1.0)
 	plt.plot(x[:,0],x[:,1],'.k')
 
+# This function plots 2D points "x" and a FKM solution represented by lines
+# between points whose intensity is proportional to the assignment
+# 
+# Inputs:
+# x: n x 2 matrix of data points
+# e: n x n matrix of memberships
 def FKM_points(x,e):
 	e = np.array(e)
 	n = e.shape[0]
@@ -37,6 +49,13 @@ def FKM_points(x,e):
 		plt.plot([plots[i][0][0],plots[i][1][0]],[plots[i][0][1],plots[i][1][1]],color=(1-ee[i],1-ee[i],1-ee[i]),linewidth=1.0)
 	plt.plot(x[:,0],x[:,1],'.k')
 
+# This function plots 2D points "x" and a FMMdd solution represented by
+# lines between points whose intensity is proportional to the assignment and representativeness
+# 
+# Inputs:
+# x: n x 2 matrix of data points
+# e: k x n matrix of memberships
+# v: k x n matrix of representativeness
 def FMMdd_points(x,e,v):
 	e = np.array(e)
 	v = np.array(v)
@@ -55,6 +74,14 @@ def FMMdd_points(x,e,v):
 			plt.plot([plots[i][0][0],plots[i][1][0]],[plots[i][0][1],plots[i][1][1]],color=(1-ev[i],1-ev[i],1-ev[i]),linewidth=1.0)
 	plt.plot(x[:,0],x[:,1],'.k')
 
+# This function plots "matrix" with indexes sorted by "permutation"
+#
+# Inputs:
+# matrix: n x n matrix displayed
+# permutation: indexes' permutation
+# names: list with label names
+# drawnow: defines whether the plot should be drawn immediately (optional)
+# finalPlot: if False, the grid, label names and colorbar won't be displayed (optional)
 def CFKM(matrix,permutation,names,drawnow=False,finalPlot=True):
 	matrix = np.array(matrix)[permutation,:][:,permutation]
 	if finalPlot:
@@ -79,6 +106,14 @@ def CFKM(matrix,permutation,names,drawnow=False,finalPlot=True):
 		plt.draw()
 		plt.pause(0.001)
 
+
+# This function plots a FKM solution with indexes sorted by "permutation"
+# 
+# Inputs:
+# e: n x n matrix of memberships
+# permutation: indexes permutation
+# names: list with label names
+# drawnow: defines whether the plot should be drawn immediately (optional)
 def FKM(matrix,permutation,names,drawnow=False):
 	matrix = np.array(matrix)[permutation,:][:,permutation]
 	names = np.array(names)[permutation]
@@ -104,6 +139,14 @@ def FKM(matrix,permutation,names,drawnow=False):
 		plt.draw()
 		plt.pause(0.001)
 
+# This function plots a FMMdd solution (e,v) with indexes sorted by "permutation"
+# 
+# Inputs:
+# e: k x n matrix of memberships
+# v: k x n matrix of representativeness
+# permutation: indexes permutation
+# names: list with label names
+# drawnow: defines whether the plot should be drawn immediately (optional)
 def FMMdd(e,v,permutation,names,drawnow=False):
 	e = np.array(e).T[permutation,:]
 	v = np.array(v).T[permutation,:]

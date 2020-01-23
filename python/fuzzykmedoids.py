@@ -2,6 +2,22 @@ import numpy as np
 import random
 import cvxopt as cv
 
+# This function solves the Convex Fuzzy k-Medoids problem:
+# minimize Z = sum{i}sum{j}d{ij}*e{ij}^h
+# subject to
+# sum{j}e{ij} = 1 for all i
+# sum{j}e{jj} = k
+# e{ij} <= e{jj} for all i,j
+# 0 <= e{ij} <= 1 for all i,j
+# 
+# Inputs:
+# d: n x n dissimilarity matrix
+# k: number of clusters
+# h: fuzziness factor
+# 
+# Outputs:
+# Z: solution cost
+# e: n x n membership matrix
 def CFKM(d,k,h):
 	n = len(d)
 	
@@ -9,32 +25,36 @@ def CFKM(d,k,h):
 	
 	Aeq = cv.spmatrix([],[],[],(n+1,n*n))
 	beq = []
-	# sum{j}e{ij} = 1 for all i
+	
+	# Constraint  #1: sum{j}e{ij} = 1 for all i
 	for i in range(n):
 		for j in range(n):
 			Aeq[i,i*n+j] = 1
 	beq = [1.]*n
-	# sum{j}e{jj} = k
+
+	# Constraint #2: sum{j}e{jj} = k
 	for j in range(n):
 		Aeq[n,j*n+j] = 1
 	beq += [float(k)]
 	beq = cv.matrix(beq,(n+1,1))
 	
-	Aineq = cv.spmatrix([],[],[],(2*n*n,n*n))
-	bineq = []
-	# e{ij} - e{jj} <= 0 for all i,j
+	A = cv.spmatrix([],[],[],(2*n*n,n*n))
+	b = []
+	
+	# Constraint #3: e{ij} - e{jj} <= 0 for all i,j
 	for i in range(n):
 		for j in range(n):
 			if i!=j:
-				Aineq[i*n+j,i*n+j] = 1
-				Aineq[i*n+j,j*n+j] = -1
-	bineq = [0.]*n*n
-	# -e{ij} <= 0 for all i,j
+				A[i*n+j,i*n+j] = 1
+				A[i*n+j,j*n+j] = -1
+	b = [0.]*n*n
+	
+	# Lower bounds: -e{ij} <= 0 for all i,j
 	for i in range(n):
 		for j in range(n):
-			Aineq[n*n+i*n+j,i*n+j] = -1
-	bineq += [0.]*n*n
-	bineq = cv.matrix(bineq,(n*n*2,1))
+			A[n*n+i*n+j,i*n+j] = -1
+	b += [0.]*n*n
+	b = cv.matrix(b,(n*n*2,1))
 	
 	def F(x=None, z=None):
 		if x is None:
@@ -50,9 +70,9 @@ def CFKM(d,k,h):
 		return (f,Df,H)
 	
 	if h > 1:
-		sol = cv.solvers.cp(F, G=Aineq, h=bineq, A=Aeq, b=beq)
+		sol = cv.solvers.cp(F, G=A, h=b, A=Aeq, b=beq)
 	else:
-		sol = cv.solvers.lp(coef.T, G=Aineq, h=bineq, A=Aeq, b=beq)
+		sol = cv.solvers.lp(coef.T, G=A, h=b, A=Aeq, b=beq)
 	x = sol['x']
 	Z = sol['primal objective']
 	e = [[]]*n
@@ -62,6 +82,24 @@ def CFKM(d,k,h):
 			e[i][j] = x[i*n+j]
 	return (Z,e)
 
+# This function aims to solve the Fuzzy Clustering with Multi-Medoids
+# problem:
+# minimize Z = sum{c}sum{i}sum{j}d{ij}*e{ci}^h*v{cj}^g
+# subject to
+# sum{c}e{ci} = 1 for all i
+# sum{j}v{cj} = 1 for all c
+# 0 <= e{ci},v{cj} <= 1 forall c,i,j
+# 
+# Inputs:
+# d: n x n dissimilarity matrix
+# k: number of clusters
+# h: membership fuzziness factor
+# g: representativeness fuzziness degree (optional). If not provided, g=h
+# 
+# Outputs:
+# Z: solution cost
+# e: k x n membership matrix
+# v: k x n representativeness matrix
 def FMMdd(dd,k,h,g=None):
 	if g is None:
 		g = h
@@ -92,6 +130,23 @@ def FMMdd(dd,k,h,g=None):
 				Z += e[c,i]**h*v[c,j]**g*d[i,j]
 	return Z,e.tolist(),v.tolist()
 
+# This function aims to solve the Fuzzy k-Medoids problem:
+# minimize Z = sum{i}sum{j}d{ij}*e{ij}^h
+# subject to
+# sum{j}e{ij} = 1 for all i
+# sum{j}e{jj} = k
+# e{ij} <= e{jj} for all i,j
+# 0 <= e{ij} <= 1 for all i ~= j
+# e{jj} binary for all j
+# 
+# Inputs:
+# d: n x n dissimilarity matrix
+# k: number of clusters
+# h: membership fuzziness factor
+# 
+# Outputs:
+# Z: solution cost
+# e: k x n membership matrix
 def FKM(dd,k,h):
 	d = np.array(dd)
 	n = np.size(d,0)
