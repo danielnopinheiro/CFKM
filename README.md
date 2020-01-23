@@ -38,46 +38,46 @@ Required external libraries:
 
 ### [fuzzykmedoids.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/fuzzykmedoids.py):
 * **CFKM**: solves the Convex Fuzzy k-Medoids problem;
-```
-def CFKM(d,k,h):
-# This function solves the Convex Fuzzy k-Medoids problem:
-# minimize Z = sum{i}sum{j}d{ij}*e{ij}^h
-# subject to
-# sum{j}e{ij} = 1 for all i
-# sum{j}e{jj} = k
-# e{ij} <= e{jj} for all i,j
-# 0 <= e{ij} <= 1 for all i,j
-# 
-# Inputs:
-# d: n x n dissimilarity matrix
-# k: number of clusters
-# h: fuzziness factor
-# 
-# Outputs:
-# Z: solution cost
-# e: n x n membership matrix
-```
+  ```
+  def CFKM(d,k,h):
+  # This function solves the Convex Fuzzy k-Medoids problem:
+  # minimize Z = sum{i}sum{j}d{ij}*e{ij}^h
+  # subject to
+  # sum{j}e{ij} = 1 for all i
+  # sum{j}e{jj} = k
+  # e{ij} <= e{jj} for all i,j
+  # 0 <= e{ij} <= 1 for all i,j
+  # 
+  # Inputs:
+  # d: n x n dissimilarity matrix
+  # k: number of clusters
+  # h: fuzziness factor
+  # 
+  # Outputs:
+  # Z: solution cost
+  # e: n x n membership matrix
+  ```
 * **FKM**: heuristic for the Fuzzy k-Medoids problem;
-```
-def FKM(d,k,h):
-# This function aims to solve the Fuzzy k-Medoids problem:
-# minimize Z = sum{i}sum{j}d{ij}*e{ij}^h
-# subject to
-# sum{j}e{ij} = 1 for all i
-# sum{j}e{jj} = k
-# e{ij} <= e{jj} for all i,j
-# 0 <= e{ij} <= 1 for all i ~= j
-# e{jj} binary for all j
-# 
-# Inputs:
-# d: n x n dissimilarity matrix
-# k: number of clusters
-# h: membership fuzziness factor
-# 
-# Outputs:
-# Z: solution cost
-# e: k x n membership matrix
-```
+  ```
+  def FKM(d,k,h):
+  # This function aims to solve the Fuzzy k-Medoids problem:
+  # minimize Z = sum{i}sum{j}d{ij}*e{ij}^h
+  # subject to
+  # sum{j}e{ij} = 1 for all i
+  # sum{j}e{jj} = k
+  # e{ij} <= e{jj} for all i,j
+  # 0 <= e{ij} <= 1 for all i ~= j
+  # e{jj} binary for all j
+  # 
+  # Inputs:
+  # d: n x n dissimilarity matrix
+  # k: number of clusters
+  # h: membership fuzziness factor
+  # 
+  # Outputs:
+  # Z: solution cost
+  # e: k x n membership matrix
+  ```
 * **FMMdd**: heuristic for the Fuzzy Clustering with Multi-Medoids problem;
   ```
   def FMMdd(dd,k,h,g=None):
@@ -105,8 +105,40 @@ def FKM(d,k,h):
 
 ### [plots.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/plots.py):
 * **CFKM**: displays a square matrix with indexes sorted in a given order;
+  ```
+  def CFKM(matrix,permutation,names,drawnow=False,finalPlot=True):
+  # This function plots "matrix" with indexes sorted by "permutation"
+  #
+  # Inputs:
+  # matrix: n x n matrix displayed
+  # permutation: indexes' permutation
+  # names: list with label names
+  # drawnow: defines whether the plot should be drawn immediately (optional)
+  # finalPlot: if False, the grid, label names and colorbar won't be displayed (optional)
+  ```
 * **FKM**: displays a FKM solution matrix with indexes sorted in a given order;
+  ```
+  def FKM(matrix,permutation,names,drawnow=False):
+  # This function plots a FKM solution with indexes sorted by "permutation"
+  # 
+  # Inputs:
+  # e: n x n matrix of memberships
+  # permutation: indexes permutation
+  # names: list with label names
+  # drawnow: defines whether the plot should be drawn immediately (optional)
+  ```
 * **FMMdd**: displays FMMdd solution matrices (memberships and representativeness) with indexes sorted in a given order;
+  ```
+  def FMMdd(e,v,permutation,names,drawnow=False):
+  # This function plots a FMMdd solution (e,v) with indexes sorted by "permutation"
+  # 
+  # Inputs:
+  # e: k x n matrix of memberships
+  # v: k x n matrix of representativeness
+  # permutation: indexes permutation
+  # names: list with label names
+  # drawnow: defines whether the plot should be drawn immediately (optional)
+  ```
 * **CFKM_points**: plots 2D points and a CFKM solution represented by lines between points whose intensity is proportional to the assignment;
 * **FKM_points**: plots 2D points and a FKM solution represented by lines between points whose intensity is proportional to the assignment;
 * **FMMdd_points**: plots 2D points and a FMMdd solution represented by lines between points whose intensity is proportional to the assignment and representativeness;
