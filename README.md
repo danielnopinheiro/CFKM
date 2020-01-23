@@ -34,3 +34,4 @@ Required external libraries:
 * [NumPy](https://www.numpy.org/): package for scientific computing with Python;
 * [Matplotlib](https://matplotlib.org/): Python 2D plotting library;
 * [CVXOPT](https://cvxopt.org/): Python software for convex optimization;
+* [Scikit-learn](https://scikit-learn.org/stable/index.html): open source machine learning library that supports supervised and unsupervised learning;
