@@ -37,8 +37,22 @@ Required external libraries:
 * [Scikit-learn](https://scikit-learn.org/stable/index.html): open source machine learning library that supports supervised and unsupervised learning;
 
 ### [fuzzykmedoids.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/fuzzykmedoids.py):
-* CFKM: solves the Convex Fuzzy k-Medoids problem;
-* FKM: heuristic for the Fuzzy k-Medoids problem;
-* FMMdd: heuristic for the Fuzzy Clustering with Multi-Medoids problem;
-  * membership: computes the optimal assignments given the representativeness;
-  * prot_weight: computes the optimal representativeness given the assignments;
+* **CFKM**: solves the Convex Fuzzy k-Medoids problem;
+* **FKM**: heuristic for the Fuzzy k-Medoids problem;
+* **FMMdd**: heuristic for the Fuzzy Clustering with Multi-Medoids problem;
+  * **membership**: computes the optimal assignments given the representativeness;
+  * **prot_weight**: computes the optimal representativeness given the assignments;
+
+### [plots.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/plots.py):
+* **CFKM**: displays a square matrix with indexes sorted in a given order;
+* **FKM**: displays a FKM solution matrix with indexes sorted in a given order;
+* **FMMdd**: displays FMMdd solution matrices (memberships and representativeness) with indexes sorted in a given order;
+* **CFKM_points**: plots 2D points and a CFKM solution represented by lines between points whose intensity is proportional to the assignment;
+* **FKM_points**: plots 2D points and a FKM solution represented by lines between points whose intensity is proportional to the assignment;
+* **FMMdd_points**: plots 2D points and a FMMdd solution represented by lines between points whose intensity is proportional to the assignment and representativeness;
+
+### Miscellaneous
+* [MinWLA.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/MinWLA.py):
+  * **sort**: aims to solve the [Minimum Weighted Linear Arrangement problem](https://doi.org/10.1016/0166-218X(93)E0168-X), which sorts the indexes of a matrix so that the elements with higher values get close to the diagonal;
+* [foods.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/foods.py): contains the "foods" data set used in the paper;
+* [synthetic.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/synthetic.py): contains the four synthetic data sets used in the paper.
