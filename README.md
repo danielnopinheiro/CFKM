@@ -28,7 +28,7 @@ We provide the Matlab implementation used in the [Convex fuzzy k-medoids cluster
 * [synthetic.mat](https://github.com/danielnopinheiro/CFKM/blob/master/matlab/synthetic.mat): Matlab workspace with the synthetic data sets used in the paper.
 
 ## Python 2.7
-We provide a Python implementation used in the [Convex fuzzy k-medoids clustering](https://doi.org/10.1016/j.fss.2020.01.001) article. You may start with files [example.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/example.py) and [example2.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/example2.py) in order to understand how to use the functions. Following we briefly describe each function present in our implementation.
+We provide a Python implementation for the [Convex fuzzy k-medoids clustering](https://doi.org/10.1016/j.fss.2020.01.001) problem. You may start with files [example.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/example.py) and [example2.py](https://github.com/danielnopinheiro/CFKM/blob/master/python/example2.py) in order to understand how to use the functions. Following we briefly describe each function present in our implementation.
 
 Required external libraries:
 * [NumPy](https://www.numpy.org/): package for scientific computing with Python;
